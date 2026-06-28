@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashley Buenafe — Portfolio</title>
+
+  <!-- Angeris Pixel loaded from local font file (drop the .otf into /fonts/) -->
+  <!-- Courier-style body text via Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────── -->
+  <nav class="nav">
+    <a class="nav__logo" href="#hero">Ashley B.</a>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" aria-label="Open menu">&#9776;</button>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero__tag">Graphic Designer &amp; Illustrator</div>
+    <h1 class="hero__name">Ashley<br/>Buenafe</h1>
+    <p class="hero__sub">Creating visuals that help people express themselves — one pixel at a time.</p>
+    <a href="#work" class="btn btn--dark">See My Work ↓</a>
+
+    <div class="hero__deco hero__deco--star">✦</div>
+    <div class="hero__deco hero__deco--circle"></div>
+  </section>
+
+  <!-- ── ABOUT ─────────────────────────────────────────────── -->
+  <section class="about section" id="about">
+    <div class="section__label">01 — About Me</div>
+    <div class="about__grid">
+      <div class="about__photo-wrap">
+        <div class="about__photo-frame">
+          <div class="about__photo-placeholder">
+            <span>Photo</span>
+          </div>
+        </div>
+        <div class="about__badge">HAU · CS '26</div>
+      </div>
+      <div class="about__text">
+        <h2 class="section__heading">Hi, I'm Ashley!</h2>
+        <p>I'm a graphic designer and illustrator based in the Philippines, currently a 4th-year Computer Science student at Holy Angel University. I love blending technical know-how with creative instinct to make designs that actually mean something.</p>
+        <p>Whether it's a social media pubmat, a UI mockup, or a set of illustrated stickers — I approach every piece with care, intention, and a little bit of fun.</p>
+
+        <div class="skills-block">
+          <div class="skills-col">
+            <h3 class="skills-col__title">Software</h3>
+            <ul class="skills-list">
+              <li><span class="skills-list__icon ps">Ps</span> Photoshop</li>
+              <li><span class="skills-list__icon ai">Ai</span> Illustrator</li>
+              <li><span class="skills-list__icon id">Id</span> InDesign</li>
+              <li><span class="skills-list__icon cv">Cv</span> Canva</li>
+              <li><span class="skills-list__icon fg">Fg</span> Figma</li>
+            </ul>
+          </div>
+          <div class="skills-col">
+            <h3 class="skills-col__title">Technical</h3>
+            <ul class="skills-list skills-list--plain">
+              <li>Typography</li>
+              <li>Layout Design</li>
+              <li>UI / UX Design</li>
+              <li>Illustration</li>
+              <li>Brand Identity</li>
+            </ul>
+          </div>
+          <div class="skills-col">
+            <h3 class="skills-col__title">Experience</h3>
+            <ul class="skills-list skills-list--plain">
+              <li><strong>Head Creative Director</strong><br/><small>LOOP · HAU · 2024–2025</small></li>
+              <li><strong>External Comms Creative Member</strong><br/><small>SoCSC · HAU · 2023–2024</small></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WORK ─────────────────────────────────────────────── -->
+  <section class="work section" id="work">
+    <div class="section__label">02 — Selected Work</div>
+    <h2 class="section__heading">Here's Some of My Work</h2>
+
+    <div class="work__filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="pubmat">Publication</button>
+      <button class="filter-btn" data-filter="illustration">Illustration</button>
+      <button class="filter-btn" data-filter="ui">UI / UX</button>
+      <button class="filter-btn" data-filter="print">Print</button>
+    </div>
+
+    <div class="work__grid">
+
+      <!-- Social Media Pubmat -->
+      <article class="card" data-cat="pubmat">
+        <div class="card__img card__img--orange">
+          <img src="images/socsc-pubmat.png" alt="SoCSC First Day of Instruction Pubmat" class="card__real-img" onerror="this.style.display='none'" />
+          <div class="card__img-label card__img-placeholder">
+            <span class="retro-badge">FIRST DAY</span>
+            <span>of Instruction</span>
+            <span class="retro-date">June 26, 2024 · Wednesday</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Publication Material</span>
+          <h3 class="card__title">SoCSC First Day of Instruction Pubmat</h3>
+          <p class="card__desc">Social media announcement graphic for the School of Computing Student Council. Cork board aesthetic with bold retro type.</p>
+        </div>
+      </article>
+
+      <!-- Conceptual Design Study -->
+      <article class="card" data-cat="pubmat">
+        <div class="card__img card__img--neutral">
+          <img src="images/current-faves.png" alt="Current Faves T-Shirt Collage" class="card__real-img" onerror="this.style.display='none'" />
+          <div class="card__img-label card__img-label--dark card__img-placeholder card__img-label--tshirt">
+            <span class="tshirt-text">CURRENT FAVES</span>
+            <div class="tshirt-items">🛒 matcha · pockys · wuthering heights</div>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Conceptual Design</span>
+          <h3 class="card__title">Current Faves — T-Shirt Collage</h3>
+          <p class="card__desc">A t-shirt graphic design study blending photo collage, mixed typography, and Y2K-inspired layout.</p>
+        </div>
+      </article>
+
+      <!-- Flea Market Pubmat -->
+      <article class="card" data-cat="pubmat">
+        <div class="card__img card__img--pink">
+          <img src="images/flea-market.png" alt="Bea's Flea Market Pubmat" class="card__real-img" onerror="this.style.display='none'" />
+          <div class="card__img-label card__img-label--dark card__img-placeholder">
+            <span class="flea-title">bea's flea market</span>
+            <span class="flea-sub">vintage · trinkets · jewlery · snacks</span>
+            <span class="flea-date">Sunday, January 11 · Angeles City</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Conceptual Design</span>
+          <h3 class="card__title">Bea's Flea Market — Pubmat</h3>
+          <p class="card__desc">Playful, star-studded flyer design for a conceptual flea market event. Whimsical type and pastel palette.</p>
+        </div>
+      </article>
+
+      <!-- Escape Room Poster -->
+      <article class="card" data-cat="pubmat">
+        <div class="card__img card__img--dark">
+          <img src="images/escape-room.png" alt="Escape Room Poster" class="card__real-img" onerror="this.style.display='none'" />
+          <div class="card__img-label card__img-placeholder">
+            <span class="escape-title">ESCAPE ROOM</span>
+            <span class="escape-sub">Can you find your way out?</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Poster Design</span>
+          <h3 class="card__title">Escape Room Event Poster</h3>
+          <p class="card__desc">Conceptual event poster design with a dark, atmospheric theme. Bold typography and dramatic composition.</p>
+        </div>
+      </article>
+
+      <!-- LOOP Pamphlet -->
+      <article class="card card--wide" data-cat="print">
+        <div class="card__img card__img--blue">
+          <img src="images/loop-pamphlet.png" alt="LOOP Recruitment Pamphlet" class="card__real-img" onerror="this.style.display='none'" />
+          <div class="card__img-label card__img-placeholder">
+            <span class="loop-title">Why Join LOOP?</span>
+            <span class="loop-sub">League of Outstanding Programmers · HAU</span>
+            <div class="loop-items">
+              <span>Meet the Freshies</span>
+              <span>Coding Workshops</span>
+              <span>Bridging Program</span>
+              <span>Code to Death Comp.</span>
+            </div>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Print Design</span>
+          <h3 class="card__title">LOOP Recruitment Pamphlet</h3>
+          <p class="card__desc">A double-panel DL pamphlet for the League of Outstanding Programmers. Bold blue-and-gold racing stripe aesthetic with structured information hierarchy.</p>
+        </div>
+      </article>
+
+      <!-- Sticker 1 -->
+      <article class="card" data-cat="illustration">
+        <div class="card__img card__img--mint">
+          <img src="images/sticker-1.png" alt="LOOP Sticker — GBA" class="card__real-img" onerror="this.style.display='none'" />
+          <div class="card__img-label card__img-placeholder">
+            <div class="gameboy gb--purple" style="width:80px;height:60px;font-size:.9rem;">GBA</div>
+            <span>LOOP Advance</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Illustration · Merch</span>
+          <h3 class="card__title">LOOP Sticker — GBA</h3>
+          <p class="card__desc">Illustrated Game Boy Advance sticker for LOOP university org merchandise.</p>
+        </div>
+      </article>
+
+      <!-- Sticker 2 -->
+      <article class="card" data-cat="illustration">
+        <div class="card__img card__img--sky">
+          <img src="images/sticker-2.png" alt="LOOP Sticker — PSP" class="card__real-img" onerror="this.style.display='none'" />
+          <div class="card__img-label card__img-placeholder">
+            <div class="gameboy gb--blue" style="width:80px;height:60px;font-size:.9rem;">PSP</div>
+            <span>LOOP PSP</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Illustration · Merch</span>
+          <h3 class="card__title">LOOP Sticker — PSP</h3>
+          <p class="card__desc">Illustrated PSP sticker for LOOP university org merchandise.</p>
+        </div>
+      </article>
+
+      <!-- Sticker 3 -->
+      <article class="card" data-cat="illustration">
+        <div class="card__img card__img--sage">
+          <img src="images/sticker-3.png" alt="LOOP Sticker — Game Boy" class="card__real-img" onerror="this.style.display='none'" />
+          <div class="card__img-label card__img-placeholder">
+            <div class="gameboy gb--green" style="width:80px;height:60px;font-size:.9rem;">GB</div>
+            <span>LOOP Gameboy</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Illustration · Merch</span>
+          <h3 class="card__title">LOOP Sticker — Game Boy</h3>
+          <p class="card__desc">Illustrated Game Boy sticker for LOOP university org merchandise.</p>
+        </div>
+      </article>
+
+      <!-- Sticker 4 -->
+      <article class="card" data-cat="illustration">
+        <div class="card__img card__img--peach">
+          <img src="images/sticker-4.png" alt="LOOP Sticker — 4th design" class="card__real-img" onerror="this.style.display='none'" />
+          <div class="card__img-label card__img-placeholder">
+            <div class="gameboy gb--purple" style="width:80px;height:60px;font-size:.9rem;">✦</div>
+            <span>LOOP Sticker</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Illustration · Merch</span>
+          <h3 class="card__title">LOOP Sticker — Nintendo DS </h3>
+          <p class="card__desc">Illustrated Nintendo DS sticker for LOOP university org merchandise.</p>
+        </div>
+      </article>
+
+      <!-- Bookclub Cafe UI -->
+      <article class="card card--wide" data-cat="ui">
+        <div class="card__img card__img--blush">
+          <img src="images/bookclub-ui.png" alt="The Bookclub Café Website Concept" class="card__real-img" onerror="this.style.display='none'" />
+          <div class="card__img-label card__img-label--dark card__img-placeholder">
+            <div class="ui-mock">
+              <div class="ui-mock__phone">
+                <div class="ui-mock__topbar">☰</div>
+                <div class="ui-mock__hero">The Bookclub Café</div>
+                <div class="ui-mock__sub">Books and Coffee</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card__body">
+          <span class="card__tag">UI / UX Design</span>
+          <h3 class="card__title">The Bookclub Café — Website Concept</h3>
+          <p class="card__desc">Conceptual mobile-first website design for a cozy bookstore café. Soft pink and forest green palette with elegant serif typography.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── CONTACT ─────────────────────────────────────────────── -->
+  <section class="contact section" id="contact">
+    <div class="section__label">03 — Get In Touch</div>
+    <h2 class="section__heading">Let's Work Together</h2>
+    <p class="contact__sub">I'm open to freelance projects, internships, and creative collaborations. Let's make something great!</p>
+    <div class="contact__links">
+      <a href="mailto:ashley@email.com" class="btn btn--dark">Email Me</a>
+      <a href="#" class="btn btn--outline">LinkedIn</a>
+      <a href="#" class="btn btn--outline">Behance</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="footer">
+    <span>✦ © 2025 Ashley Buenafe. Made with love and lots of matcha. ✦</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
