@@ -431,6 +431,7 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   box-shadow: var(--shadow-card);
   transition: transform .25s ease, box-shadow .25s ease, opacity .3s;
+  will-change: transform;
   display: flex;
   flex-direction: column;
 }
@@ -449,7 +450,7 @@ img { display: block; max-width: 100%; }
 }
 
 .card__img {
-  aspect-ratio: 4/3;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -457,6 +458,15 @@ img { display: block; max-width: 100%; }
   position: relative;
   overflow: hidden;
 }
+
+/* Per-card aspect ratios matching actual image dimensions */
+.card__img--ratio-square    { aspect-ratio: 1 / 1; }           /* socsc: 9000x9000 */
+.card__img--ratio-cfaves    { aspect-ratio: 7733 / 7446; }     /* current-faves */
+.card__img--ratio-flea      { aspect-ratio: 7589 / 7423; }     /* flea-market */
+.card__img--ratio-escape    { aspect-ratio: 3 / 4; }           /* escape-room: 10000x13334 */
+.card__img--ratio-pamphlet  { aspect-ratio: 10367 / 6600; }    /* loop-pamphlet — all 4 panels */
+.card__img--ratio-sticker   { aspect-ratio: 4 / 3; }            /* stickers — original */
+.card__img--ratio-portrait  { aspect-ratio: 1440 / 2358; }     /* bookclub-ui */
 
 /* Real image sits on top; placeholder shows beneath when image fails */
 .card__real-img {
@@ -467,6 +477,14 @@ img { display: block; max-width: 100%; }
   object-fit: cover;
   z-index: 2;
   display: block;
+}
+
+/* Portrait and multi-panel cards: show full image, no cropping */
+.card__img--ratio-escape .card__real-img,
+.card__img--ratio-portrait .card__real-img,
+.card__img--ratio-pamphlet .card__real-img {
+  object-fit: contain;
+  background: inherit;
 }
 
 /* When a real image loads successfully, hide the placeholder label */
@@ -802,4 +820,20 @@ img { display: block; max-width: 100%; }
   color: var(--cream);
   font-size: 1.6rem;
   cursor: pointer;
+}
+
+/* ── PERFORMANCE: CSS-based scroll reveal (no inline style thrashing) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Prevent layout shift while images load */
+.card__real-img {
+  content-visibility: auto;
 }
