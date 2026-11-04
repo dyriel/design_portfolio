@@ -20,20 +20,24 @@
     <a class="nav__logo" href="#hero">Ashley B.</a>
     <ul class="nav__links">
       <li><a href="#about">About</a></li>
-      <li><a href="#work">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="images/Ashley_Buenafe_Resume.pdf" target="_blank" rel="noopener" class="nav__resume">Resume</a></li>
     </ul>
     <button class="nav__burger" aria-label="Open menu">&#9776;</button>
   </nav>
 
   <!-- ── HERO ─────────────────────────────────────────────── -->
   <section class="hero" id="hero">
-    <div class="hero__tag">Illustrator &amp; Designer</div>
+    <div class="hero__tag">Computer Science Student | Illustrator | Designer</div>
     <h1 class="hero__name">Ashley<br/>Buenafe</h1>
-    <p class="hero__sub">Creating visuals that resonate with people.</p>
-    <a href="#work" class="btn btn--dark">See My Work ↓</a>
+    <p class="hero__sub">Building thoughtful software and creating visuals that resonate with people.</p>
+    <div class="hero__actions">
+      <a href="#work" class="btn btn--dark">See My Work ↓</a>
+      <a href="images/Ashley_Buenafe_Resume.pdf" target="_blank" rel="noopener" class="btn btn--outline">Resume ↗</a>
+    </div>
 
-    <div class="hero__deco hero__deco--star">✦</div>
+    <div class="hero__sky" id="hero-sky" aria-hidden="true"></div>
     <div class="hero__deco hero__deco--circle"></div>
   </section>
 
@@ -43,55 +47,129 @@
     <div class="about__grid">
       <div class="about__photo-wrap">
         <div class="about__photo-frame">
-          <div class="about__photo-placeholder">
-            <!--<span>Photo</span>-->
-            <img src="images/photo.jpg" alt="Ashley Buenafe" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
+          <img src="images/photo.jpg" alt="Ashley Buenafe" class="about__photo" />
         </div>
         <div class="about__badge">HAU · CS '27</div>
       </div>
       <div class="about__text">
         <h2 class="section__heading">Hi, I'm Ashley!</h2>
-        <p>I'm a graphic designer and illustrator based in Angeles City, Pampanga. I'm currently a 4th-year Computer Science student at Holy Angel University. I love blending my knowledge for design with creative instinct to make publication material that inspires people.</p>
-        <p>Whether it's social media content, UI mockups, or illustrations, I approach every piece with care, intention, and a little bit of whimsy!</p>
+        <p>I'm a 4th-year Computer Science student at Holy Angel University in Angeles City, Pampanga, with a GWA of 1.21 and an expected graduation in April 2027. My coursework and research center on intelligent systems and data analytics.</p>
+        <p>This year I built a real-time volleyball referee whistle detector in Python that reaches 98% accuracy on unseen data, then packaged it with Docker for user testing.</p>
+        <p>I'm also an illustrator and designer, and I bring the same care, intention, and a little bit of whimsy to every interface, poster, and sticker I make!</p>
 
-        <div class="skills-block">
-          <div class="skills-col">
-            <h3 class="skills-col__title">Software</h3>
-            <ul class="skills-list">
-              <li><span class="skills-list__icon ps">Ps</span> Photoshop</li>
-              <li><span class="skills-list__icon ai">Ai</span> Illustrator</li>
-              <li><span class="skills-list__icon id">Id</span> InDesign</li>
-              <li><span class="skills-list__icon cv">Cv</span> Canva</li>
-              <li><span class="skills-list__icon fg">Fg</span> Figma</li>
-            </ul>
+      </div>
+    </div>
+
+    <div class="about__skills">
+      <h3 class="detail-col__title">Skills</h3>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3 class="skill-group__title">Languages</h3>
+        <ul class="chips"><li>Python</li><li>Java</li><li>JavaScript</li><li>SQL</li><li>HTML</li><li>CSS</li><li>Dart</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3 class="skill-group__title">Frameworks &amp; Libraries</h3>
+        <ul class="chips"><li>React.js</li><li>Node.js</li><li>Flutter</li><li>Tailwind CSS</li><li>PyTorch</li><li>Pandas</li><li>scikit-learn</li><li>Matplotlib</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3 class="skill-group__title">Tools &amp; Cloud</h3>
+        <ul class="chips"><li>Git</li><li>Docker</li><li>AWS (EC2, VPC, IAM)</li><li>Supabase</li><li>OpenAI API</li><li>VS Code</li><li>MS Office</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3 class="skill-group__title">Design</h3>
+        <ul class="chips"><li>Photoshop</li><li>Illustrator</li><li>InDesign</li><li>Canva</li><li>Figma</li><li>Clip Studio Paint</li></ul>
+      </div>
+    </div>
+    </div>
+
+    <div class="about__details">
+      <div class="detail-col">
+        <h3 class="detail-col__title">Experience</h3>
+        <div class="detail-list">
+          <div class="detail-item">
+            <p class="detail-item__title">Student Researcher</p>
+            <p class="detail-item__meta">Holy Angel University · Jun – Oct 2026</p>
+            <p class="detail-item__text">Built a real-time whistle detector in Python (scikit-learn) trained on 1,930 audio clips, validated on unseen venues and deployed with Docker.</p>
           </div>
-          <div class="skills-col">
-            <h3 class="skills-col__title">Technical</h3>
-            <ul class="skills-list skills-list--plain">
-              <li>Typography</li>
-              <li>Layout Design</li>
-              <li>UI / UX Design</li>
-              <li>Illustration</li>
-              <li>Brand Identity</li>
-            </ul>
+          <div class="detail-item">
+            <p class="detail-item__title">External Communications Staff Member</p>
+            <p class="detail-item__meta">School of Computing Student Council · Feb 2024 – Apr 2025</p>
+            <p class="detail-item__text">Designed posters, publication materials and official merchandise, selling around 100 units.</p>
           </div>
-          <div class="skills-col">
-            <h3 class="skills-col__title">Experience</h3>
-            <ul class="skills-list skills-list--plain">
-              <li><strong>Head Creative Director</strong><br/><small>LOOP · HAU · 2024–2025</small></li>
-              <li><strong>External Comms Creative Staff</strong><br/><small>SOC-CSC · HAU · 2023–2024</small></li>
-            </ul>
+          <div class="detail-item">
+            <p class="detail-item__title">Head Creative Director</p>
+            <p class="detail-item__meta">League of Outstanding Programmers (LOOP) · 2024 – 2025</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── WORK ─────────────────────────────────────────────── -->
-  <section class="work section" id="work">
-    <div class="section__label">02 — Selected Work</div>
-    <h2 class="section__heading">Here's Some of My Work</h2>
+  <!-- ── PROJECTS ─────────────────────────────────────────────── -->
+  <section class="projects section" id="projects">
+    <div class="section__label">02 — Projects</div>
+    <h2 class="section__heading">Here's some of my work</h2>
+    <div class="project-list">
+      <article class="project">
+        <div class="project__main">
+          <div class="project__head">
+            <h3 class="project__title"><a class="project__link" href="https://github.com/dyriel/multimodal-volleyball-officiating" target="_blank" rel="noopener">Volleyball Whistle Detector</a></h3>
+            <span class="project__badge">Featured</span>
+          </div>
+          <p class="project__desc">Real-time referee whistle detector combining SVM, Random Forest and Gradient Boosting, trained on 1,930 audio clips. Reaches 98% accuracy on unseen data, validated with grouped cross-validation on venues it had never heard, and packaged with Docker for user testing.</p>
+          <ul class="project__tags"><li>Python</li><li>scikit-learn</li><li>SVM</li><li>Random Forest</li><li>Docker</li></ul>
+        </div>
+        <div class="project__side">
+          <span class="project__year">2026</span>
+          <span class="project__arrow" aria-hidden="true">↗</span>
+        </div>
+      </article>
+      <article class="project">
+        <div class="project__main">
+          <div class="project__head">
+            <h3 class="project__title"><a class="project__link" href="https://github.com/dyriel/helmet-detection" target="_blank" rel="noopener">Motorcycle Helmet Detector</a></h3>
+            <span class="project__badge">Featured</span>
+          </div>
+          <p class="project__desc">A motorcycle helmet detection system using computer vision techniques to identify and locate helmets in real-time video feeds.</p>
+          <ul class="project__tags"><li>Python</li><li>Computer Vision</li></ul>
+        </div>
+        <div class="project__side">
+          <span class="project__year">2026</span>
+          <span class="project__arrow" aria-hidden="true">↗</span>
+        </div>
+      </article>
+      <article class="project">
+        <div class="project__main">
+          <div class="project__head">
+            <h3 class="project__title"><a class="project__link" href="https://github.com/dyriel/swiss-artsy-knife" target="_blank" rel="noopener">Swiss Artsy Knife — Digital Creative Toolbox</a></h3>
+            <a class="project__demo" href="https://dyriel.github.io/swiss-artsy-knife/" target="_blank" rel="noopener">Live demo ↗</a>
+          </div>
+          <p class="project__desc">A free multi-purpose web app for digital creatives with four tools: a color palette generator, background remover, QR generator and zine layout. Built on the PERN stack, with a Node.js/Express REST API (JWT, bcrypt, rate limiting) on a Supabase-hosted PostgreSQL database, deployed with Render and GitHub Actions.</p>
+          <ul class="project__tags"><li>React</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>Supabase</li><li>Render</li><li>GitHub Actions</li></ul>
+        </div>
+        <div class="project__side">
+          <span class="project__year">2026</span>
+          <span class="project__arrow" aria-hidden="true">↗</span>
+        </div>
+      </article>
+      <article class="project">
+        <div class="project__main">
+          <div class="project__head">
+            <h3 class="project__title"><a class="project__link" href="https://github.com/dyriel/JeepMiyabe" target="_blank" rel="noopener">JeepMiyabe — Jeepney Route Finder</a></h3>
+          </div>
+          <p class="project__desc">A cross-platform mobile app that helps commuters navigate 11 official jeepney routes in Angeles City. It recommends routes with Dijkstra's algorithm based on distance, travel time and transfer costs, shows routes and the user's location with Google Maps and GPS, and uses Supabase authentication so users can save favorite destinations.</p>
+          <ul class="project__tags"><li>Flutter</li><li>Dart</li><li>Supabase</li><li>Google Maps</li><li>Dijkstra's</li></ul>
+        </div>
+        <div class="project__side">
+          <span class="project__year">2025</span>
+          <span class="project__arrow" aria-hidden="true">↗</span>
+        </div>
+      </article>
+    </div>
+
+    <!-- Design work, under Projects -->
+    <div class="work" id="work">
+      <h3 class="subhead">Design Work</h3>
 
     <div class="work__filters">
       <button class="filter-btn active" data-filter="all">All</button>
@@ -272,27 +350,85 @@
         <div class="card__body">
           <span class="card__tag">UI / UX Design</span>
           <h3 class="card__title">The Bookclub Café — Website Concept</h3>
-          <p class="card__desc">Conceptual responsive website design for a cozy bookstore café's book of the month. Soft pink and forest green palette with elegant serif typography.</p>
+          <p class="card__desc">Conceptual mobile-first website design for a cozy bookstore café. Soft pink and forest green palette with elegant serif typography.</p>
         </div>
       </article>
 
+    </div>
+
+    <!-- Phone-only carousel controls -->
+    <div class="carousel-controls" aria-label="Work gallery controls">
+      <button type="button" class="carousel-btn" id="work-prev" aria-label="Previous work">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <span class="carousel-count" id="work-count" aria-live="polite">1 / 1</span>
+      <button type="button" class="carousel-btn" id="work-next" aria-label="Next work">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
     </div>
   </section>
 
   <!-- ── CONTACT ─────────────────────────────────────────────── -->
   <section class="contact section" id="contact">
     <div class="section__label">03 — Get In Touch</div>
-    <h2 class="section__heading">Let's Work Together</h2>
-    <p class="contact__sub">I'm open to freelance projects, internships, and creative collaborations. Let's make something great!</p>
-    <div class="contact__links">
-      <a href="mailto:ashleyvbuenafe@email.com" class="btn btn--dark">Email Me</a>
-      <a href="https://www.linkedin.com/in/ashley-v-buenafe/" class="btn btn--outline">LinkedIn</a>
+    <div class="contact__grid">
+
+      <div class="contact__info">
+        <h2 class="section__heading">Let's Work Together</h2>
+        <p class="contact__sub">I'm open to freelance projects, internships, and creative collaborations. Let's make something great!</p>
+
+        <ul class="contact__list">
+          <li>
+            <span class="contact__label">Email</span>
+            <a href="mailto:ashleyvbuenafe@gmail.com">ashleyvbuenafe@gmail.com</a>
+          </li>
+          <li>
+            <span class="contact__label">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/ashley-v-buenafe/" target="_blank" rel="noopener">linkedin.com/in/ashley-v-buenafe</a>
+          </li>
+          <li>
+            <!-- EDIT: put your real GitHub URL in both places -->
+            <span class="contact__label">GitHub</span>
+            <a href="https://github.com/dyriel" target="_blank" rel="noopener">github.com/dyriel</a>
+          </li>
+          <li>
+            <span class="contact__label">Resume</span>
+            <a href="images/Ashley_Buenafe_Resume.pdf" target="_blank" rel="noopener">View my resume ↗</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact__form-wrap">
+        <form class="contact__form" id="contact-form">
+          <div class="form-field">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-field form-field--grow">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" placeholder="Tell me about the project or opportunity..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--dark btn--block" id="cf-submit">Send Message</button>
+          <p class="form-error" id="form-error" hidden>Something went wrong. Please email me directly instead.</p>
+        </form>
+
+        <div class="form-success" id="form-success" hidden>
+          <p class="form-success__title">Message sent.</p>
+          <p class="form-success__text" id="form-success-text">I'll get back to you within a day or two.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- ── FOOTER ─────────────────────────────────────────────── -->
   <footer class="footer">
-    <span>✦ © 2025 Ashley Buenafe. Made with love and lots of matcha. ✦</span>
+    <span>✦ © 2027 Ashley Buenafe. ✦</span>
   </footer>
 
   <script src="script.js"></script>
