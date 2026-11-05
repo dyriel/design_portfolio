@@ -177,7 +177,7 @@ window.addEventListener('resize', updateCarousel);
 updateCarousel();
 
 
-/* ── SKY: pixel-ASCII stars on the landing + About, hover throb, shooting stars ── */
+/* ── SKY: pixel-ASCII stars (landing, About, Design Work, Contact), hover throb, shooting stars ── */
 (function () {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const rand   = (a, b) => a + Math.random() * (b - a);
@@ -210,6 +210,7 @@ updateCarousel();
           let l = Infinity, t = Infinity, r = -Infinity, b = -Infinity;
           const add = (bb) => { l = Math.min(l, bb.left); t = Math.min(t, bb.top); r = Math.max(r, bb.right); b = Math.max(b, bb.bottom); };
           if (mode === 'btns') el.querySelectorAll('.btn').forEach((x) => add(x.getBoundingClientRect()));
+          else if (mode === 'kids') [...el.children].forEach((x) => add(x.getBoundingClientRect()));
           else if (mode === 'box') add(el.getBoundingClientRect());
           else { const rg = document.createRange(); rg.selectNodeContents(el); add(rg.getBoundingClientRect()); }
           if (l === Infinity) return;
@@ -317,11 +318,11 @@ updateCarousel();
     };
   }
 
-  const hero  = document.getElementById('hero');
-  const heroSky = document.getElementById('hero-sky');
-  const about = document.getElementById('about');
   const skies = [];
 
+  // ── landing ──
+  const hero = document.getElementById('hero');
+  const heroSky = document.getElementById('hero-sky');
   if (hero && heroSky) {
     skies.push(createSky({
       sky: heroSky, hover: hero, pad: 16,
@@ -339,40 +340,61 @@ updateCarousel();
     }));
   }
 
-  let aboutSky = null;
-  if (about) {
-    aboutSky = document.createElement('div');
-    aboutSky.className = 'about__sky';
-    aboutSky.setAttribute('aria-hidden', 'true');
-    about.insertBefore(aboutSky, about.firstChild);
-    skies.push(createSky({
-      sky: aboutSky, hover: about, pad: 12,
-      items: [
-        { sel: '#about .about__photo-wrap', mode: 'box' }, { sel: '#about .about__text', mode: 'box' },
-        { sel: '#about .about__skills', mode: 'box' },     { sel: '#about .about__details', mode: 'box' }
-      ],
-      scale: 0.38, textFade: 0.6, textReject: 0.8, yMin: 16,
-      target: (w, h, m) => m ? 20 : Math.round(Math.min(70, (w * h) / 24000)),
-      x: (w) => rand(8, w - 16),
-      minD: () => 72,
-      side: () => 1
+  // ── fainter skies behind the other sections ──
+  function addSectionSky(host, cls, items, cfg) {
+    if (!host) return null;
+    const el = document.createElement('div');
+    el.className = cls;
+    el.setAttribute('aria-hidden', 'true');
+    host.classList.add('sky-host');
+    host.insertBefore(el, host.firstChild);
+    const s = createSky(Object.assign({
+      sky: el, hover: host, pad: 12, items,
+      scale: 0.38, textFade: 0.6, textReject: 0.8, yMin: 14,
+      x: (w) => rand(8, w - 16), minD: () => 72, side: () => 1
+    }, cfg));
+    skies.push(s);
+    return { el, s };
+  }
+
+  const aboutHost = document.getElementById('about');
+  const about = addSectionSky(aboutHost, 'about__sky', [
+    { sel: '#about .about__photo-wrap', mode: 'box' }, { sel: '#about .about__text', mode: 'box' },
+    { sel: '#about .about__skills', mode: 'box' },     { sel: '#about .about__details', mode: 'box' }
+  ], { yMin: 16, target: (w, h, m) => m ? 20 : Math.round(Math.min(70, (w * h) / 24000)) });
+
+  const workHost = document.getElementById('work');
+  const work = addSectionSky(workHost, 'section-sky', [
+    { sel: '#work .subhead', mode: 'text' }, { sel: '#work .work__filters', mode: 'kids' },
+    { sel: '#work .work__grid', mode: 'box' }
+  ], { textReject: 0.85, target: (w, h, m) => m ? 24 : Math.round(Math.min(80, (w * h) / 24000)) });
+
+  const contactHost = document.getElementById('contact');
+  const contact = addSectionSky(contactHost, 'section-sky', [
+    { sel: '#contact .section__label', mode: 'text' }, { sel: '#contact .contact__grid', mode: 'box' }
+  ], { textReject: 0.75, target: (w, h, m) => m ? 16 : Math.round(Math.min(50, (w * h) / 20000)) });
+
+  // the Design Work grid changes height when you filter it, so lay the stars out again
+  if (work) {
+    document.querySelectorAll('.filter-btn').forEach((btn) => btn.addEventListener('click', () => {
+      requestAnimationFrame(() => requestAnimationFrame(() => work.s.build()));
     }));
   }
 
-  // ── shooting stars: a short volley each time the About section scrolls into view ──
-  function launchShootingStars() {
-    if (!aboutSky || reduceMotion) return;
-    const sr = aboutSky.getBoundingClientRect();
+  // ── shooting stars: a longer volley each time About or Contact scrolls into view ──
+  function launchShootingStars(skyEl) {
+    if (!skyEl || reduceMotion) return;
+    const sr = skyEl.getBoundingClientRect();
     const w = sr.width, h = sr.height;
     const small = w <= 600;
     const vis0 = Math.max(0, -sr.top);
     const vis1 = Math.min(h, window.innerHeight - sr.top);
-    const count = small ? 3 : 5;
+    const count = small ? 4 : 7;
     const TRAIL = ['✧', '･', 'ﾟ', '.', '˚', '·'];
 
     for (let i = 0; i < count; i++) {
       const ang = rand(18, 30);
-      const len = small ? rand(220, 340) : rand(420, 660);
+      const len = small ? rand(260, 380) : rand(520, 820);
       const dx = -len * Math.cos(ang * Math.PI / 180);
       const dy =  len * Math.sin(ang * Math.PI / 180);
 
@@ -394,24 +416,27 @@ updateCarousel();
       el.style.setProperty('--rot', (-ang).toFixed(1) + 'deg');
       el.style.setProperty('--dx', dx.toFixed(0) + 'px');
       el.style.setProperty('--dy', dy.toFixed(0) + 'px');
-      el.style.setProperty('--dur', rand(1.3, 1.9).toFixed(2) + 's');
-      el.style.setProperty('--delay', (i * 0.65 + rand(0, 0.5)).toFixed(2) + 's');
+      el.style.setProperty('--dur', rand(2.4, 3.4).toFixed(2) + 's');           // slower, so each one lasts longer
+      el.style.setProperty('--delay', (i * 1.0 + rand(0, 0.8)).toFixed(2) + 's'); // and the volley is spread out
       el.addEventListener('animationend', () => el.remove());
-      aboutSky.appendChild(el);
+      skyEl.appendChild(el);
     }
   }
 
-  if (about && 'IntersectionObserver' in window) {
+  function volleyOnEnter(host, skyEl) {
+    if (!host || !skyEl || !('IntersectionObserver' in window)) return;
     let inView = false, lastShot = 0;
     new IntersectionObserver(([en]) => {
       if (en.isIntersecting && !inView) {
         inView = true;
-        if (Date.now() - lastShot > 8000) { lastShot = Date.now(); launchShootingStars(); }
+        if (Date.now() - lastShot > 14000) { lastShot = Date.now(); launchShootingStars(skyEl); }
       } else if (!en.isIntersecting) {
         inView = false;
       }
-    }, { threshold: 0.12, rootMargin: '0px 0px -20% 0px' }).observe(about);
+    }, { threshold: 0.12, rootMargin: '0px 0px -20% 0px' }).observe(host);
   }
+  volleyOnEnter(aboutHost, about && about.el);
+  volleyOnEnter(contactHost, contact && contact.el);
 
   // rebuild on width change; wait for fonts so text areas are measured correctly
   let resizeTimer;
@@ -429,5 +454,79 @@ updateCarousel();
     document.fonts.addEventListener('loadingdone', () => {
       skies.forEach((s) => { if (s.moved()) s.build(); });   // only reshuffle if the layout moved
     });
+  }
+})();
+
+/* ── TYPING EFFECT: letters appear one by one, caret keeps blinking at the end ── */
+(function () {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  // swap the text for one span per letter (the <br> is kept), without changing the layout
+  function split(el) {
+    const frag = document.createDocumentFragment();
+    const chars = [];
+    let label = '';
+    el.childNodes.forEach((n) => {
+      if (n.nodeType === 3) {
+        const text = n.textContent.replace(/\s+/g, ' ');
+        label += text;
+        for (const c of text) {
+          const s = document.createElement('span');
+          s.className = 'ch';
+          s.textContent = c;
+          s.setAttribute('aria-hidden', 'true');
+          chars.push(s);
+          frag.appendChild(s);
+        }
+      } else {
+        if (n.nodeName === 'BR') label += ' ';
+        frag.appendChild(n.cloneNode(true));
+      }
+    });
+    el.setAttribute('aria-label', label.replace(/\s+/g, ' ').trim());
+    el.textContent = '';
+    el.appendChild(frag);
+    return chars;
+  }
+
+  function typeIn(el, startDelay) {
+    const chars = split(el);
+    if (!chars.length) return;
+    const caret = document.createElement('span');
+    caret.className = 'caret';
+    caret.setAttribute('aria-hidden', 'true');
+    chars[0].before(caret);            // blinks at the start while it waits
+
+    let i = 0;
+    const next = () => {
+      if (i >= chars.length) { caret.classList.remove('is-typing'); return; }   // done: it blinks forever
+      const c = chars[i++];
+      c.classList.add('on');
+      c.after(caret);
+      caret.classList.add('is-typing');                                           // solid while typing
+      setTimeout(next, c.textContent === ' ' ? 110 : rand(70, 140));
+    };
+    setTimeout(next, startDelay);
+  }
+
+  const heroName = document.querySelector('.hero__name');
+  if (heroName) typeIn(heroName, 700);
+
+  const projectsHeading = document.querySelector('#projects .section__heading');
+  if (projectsHeading) {
+    const chars = split(projectsHeading);
+    // put the text back together so typeIn can run when the heading scrolls into view
+    // (simplest: restore, then split again inside typeIn)
+    projectsHeading.textContent = chars.map((c) => c.textContent).join('');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(([en]) => {
+        if (en.isIntersecting) { io.disconnect(); typeIn(projectsHeading, 250); }
+      }, { threshold: 0.6 });
+      io.observe(projectsHeading);
+    } else {
+      typeIn(projectsHeading, 250);
+    }
   }
 })();
